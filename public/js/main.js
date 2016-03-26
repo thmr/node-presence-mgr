@@ -23,7 +23,7 @@ $(function() {
   var lastTypingTime;
   var $currentInput = $usernameInput.focus();
 
-  var socket = io.connect('http://localhost:3000/', {'forceNew':true });
+  var socket = io.connect(window.location.href, {'forceNew':true });
 
   //Kiran
   function addParticipants (data) {
