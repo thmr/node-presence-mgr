@@ -22,7 +22,5 @@ COPY server.js /src/server.js
 
 ENV MONGO_ACCESS 'not provided'
 
-RUN sed -i -- 's/mongo_access/$MONGO_ACCESS/g' /src/configs/config.js
-
 EXPOSE  3000
 CMD ["node", "/src/server.js"]
