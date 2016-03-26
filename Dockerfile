@@ -21,6 +21,7 @@ COPY server.js /src/server.js
 
 ENV MONGO_ACCESS 'not provided'
 
+#  update configs with ENV value
 RUN sed -i -- 's/mongo_access/$MONGO_ACCESS/g' /src/configs/config.js
 
 EXPOSE  3000
