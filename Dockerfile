@@ -15,6 +15,7 @@ RUN cd /src; npm install
 # Bundle app source
 COPY configs /src/configs
 COPY controllers /src/controllers
+COPY models /src/models
 COPY public /src/public
 COPY views /src/views
 COPY server.js /src/server.js
