@@ -7,22 +7,11 @@ var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 var ip = process.env.OPENSHIFT_NODEJS_IP || "0.0.0.0";
 var fs = require('fs');
 var path = require('path');
-var configs = require('./configs/config');
-
-//var mongoose = require('mongoose');
-
-/*
-
- mongoKey: '********',
- mongoHost: 'api.mongolab.com',
- mongoPath: '/api/1/databases/textras',
- mongoPort: '443',
- mongoDb: 'mongodb://textrasdev2:secretpw@********.mongolab.com:63103,********.mongolab.com:63103/textras?replicaSet=rs-ds063103',
-
- */
+var configs = require('configs/config');
 
 
-var routes = require('./controllers/users');
+
+var routes = require('controllers/users');
 app.use('/', routes);
 app.use('/static',express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
@@ -36,7 +25,7 @@ server.listen(port, ip, function () {
   console.log('Updated : Server listening at port %d', port);
 });
 
-var User = require('./models/user');
+var User = require('models/user');
 
 function getDBUserStatus(username,callback) {
   var query = User.find({}).where('_id').equals(username).select({name:1,status:1,_id:0,customstatus:1,icustomStatusFlag:1});
