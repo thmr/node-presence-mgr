@@ -1,0 +1,13 @@
+{
+  "name": "status",
+  "description":"Provides the status of the users",
+  "readme":"npm install to install the app",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "express": "*",
+    "socket.io":"*",
+	  "mongoose":"*",  
+    "jade":"*"
+  }
+}
