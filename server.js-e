@@ -9,6 +9,17 @@ var fs = require('fs');
 var path = require('path');
 var configs = require('./configs/config');
 
+//var mongoose = require('mongoose');
+
+/*
+
+ mongoKey: '3r6zoc9g5H2WBDaJlK9SGpW0Rvps5FWK',
+ mongoHost: 'api.mongolab.com',
+ mongoPath: '/api/1/databases/textras',
+ mongoPort: '443',
+ mongoDb: 'mongodb://textrasdev2:secretpw@********.mongolab.com:63103,********.mongolab.com:63103/textras?replicaSet=rs-ds063103',
+
+ */
 
 
 var routes = require('./controllers/users');

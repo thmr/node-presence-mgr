@@ -15,15 +15,13 @@ RUN cd /src; npm install
 # Bundle app source
 COPY configs /src/configs
 COPY controllers /src/controllers
-COPY models /src/models
 COPY public /src/public
 COPY views /src/views
 COPY server.js /src/server.js
 
 ENV MONGO_ACCESS 'not provided'
 
-#  update configs with ENV value
-# RUN sed -i -- 's/mongo_access/$MONGO_ACCESS/g' /src/configs/config.js
+RUN sed -i -- 's/mongo_access/$MONGO_ACCESS/g' /src/configs/config.js
 
 EXPOSE  3000
 CMD ["node", "/src/server.js"]

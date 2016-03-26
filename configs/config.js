@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var configs = {
-    mongoDb: process.env.MONGO_ACCESS || ''
+    mongoDb: 'mongo_access'
 }
 mongoose.connect(configs.mongoDb);
 module.exports = configs;

@@ -23,7 +23,7 @@ $(function() {
   var lastTypingTime;
   var $currentInput = $usernameInput.focus();
 
-  var socket = io.connect('http://textras-presence.textras.textras.svc.tutum.io:3000/', {'forceNew':true });
+  var socket = io.connect('http://localhost:3000/', {'forceNew':true });
 
   //Kiran
   function addParticipants (data) {
