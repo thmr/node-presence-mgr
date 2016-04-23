@@ -111,23 +111,22 @@ io.on('connection', function (socket) {
   socket.on('typing', function () {
     getDBUserStatus(socket.username, function(udata) {
       udata = udata[0];
-      if(udata.icustomStatusFlag == false) {
+      // if(udata.icustomStatusFlag == false) { TODO: read user's prefs to determine if we should send typing notif.
         socket.broadcast.emit('typing', {
           username: socket.username,
             chatID: socket.chatID
         });
-      }
+      // }
     });
   });
 
   socket.on('stop typing', function () {
     getDBUserStatus(socket.username, function(udata) {
       udata = udata[0];
-      if(udata.icustomStatusFlag == false) {
         socket.broadcast.emit('stop typing', {
-          username: socket.username
+          username: socket.username,
+            chatID: socket.chatID
         });
-      }
     });
   });
 
