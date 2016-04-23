@@ -35,13 +35,14 @@ function getDBUserStatus(username,callback) {
   });
 }
 
-function setDBUserStatus(username,status) {
+function setDBUserStatus(username,sockid,status) {
 	User.findOne({'_id' : username }, function(err, user) {
 		if (!user) {
 			console.log('setupMessage', 'User does not exist.Please try again');
 			return ;
 		}
 		user.status = status;
+        user.socketid= sockid;
 		user.save(function(err, user) {
 
             console.log(err);
@@ -102,7 +103,7 @@ io.on('connection', function (socket) {
         socket.broadcast.emit('user joined', {
           username: socket.username
         });
-          setDBUserStatus(socket.username,"online");
+          setDBUserStatus(socket.username, socket.id, "online");
       }
     });
   });
@@ -112,7 +113,8 @@ io.on('connection', function (socket) {
       udata = udata[0];
       if(udata.icustomStatusFlag == false) {
         socket.broadcast.emit('typing', {
-          username: socket.username
+          username: socket.username,
+            chatID: socket.chatID
         });
       }
     });
