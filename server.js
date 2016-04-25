@@ -109,6 +109,8 @@ io.on('connection', function (socket) {
   });
 
   socket.on('typing', function (data) {
+      console.log('Typing data:  ', data);
+
       socket.broadcast.emit('typing', {
           username: socket.username,
           chatID: socket.chatID
@@ -116,6 +118,7 @@ io.on('connection', function (socket) {
   });
 
   socket.on('stop typing', function (data) {
+      console.log('Typing data OFF :  ', data);
 
       socket.broadcast.emit('stop typing', {
           username: socket.username,
