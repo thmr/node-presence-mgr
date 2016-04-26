@@ -109,21 +109,15 @@ io.on('connection', function (socket) {
   });
 
   socket.on('typing', function (data) {
-      console.log('Typing data:  ', data);
+      console.log('Typing data JSON PARSE:  ', JSON.parse(JSON.stringify(data)));
 
-      socket.broadcast.emit('typing', {
-          username: socket.username,
-          chatID: socket.chatID
-      });
+      socket.broadcast.emit('typing', JSON.parse(JSON.stringify(data)));
   });
 
   socket.on('stop typing', function (data) {
-      console.log('Typing data OFF :  ', data);
+      console.log('Typing data OFF JSON PARSE:  ', JSON.parse(JSON.stringify(data)));
 
-      socket.broadcast.emit('stop typing', {
-          username: socket.username,
-          chatID: socket.chatID
-      });
+      socket.broadcast.emit('stop typing', JSON.parse(JSON.stringify(data)));
 
   });
 
