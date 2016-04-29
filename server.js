@@ -87,6 +87,7 @@ io.on('connection', function (socket) {
         socket.broadcast.emit('user joined', {
           username: data
         });
+          setDBUserStatus(socket.username,"online");
       }
     });
   });
