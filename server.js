@@ -63,7 +63,7 @@ io.on('connection', function (socket) {
         socket.broadcast.emit('user away', {
           username: data
         });
-        setDBUserStatus(socket.username,"away");
+        setDBUserStatus(socket.username, socket.id, "away");
       }
     });
   });
@@ -75,7 +75,7 @@ io.on('connection', function (socket) {
         socket.broadcast.emit('user left', {
           username: socket.username
         });
-        setDBUserStatus(socket.username,"offline");
+        setDBUserStatus(socket.username, socket.id, "offline");
       }
     });
   });
@@ -87,7 +87,7 @@ io.on('connection', function (socket) {
         socket.broadcast.emit('user joined', {
           username: data
         });
-          setDBUserStatus(socket.username,"online");
+          setDBUserStatus(socket.username, socket.id ,"online");
       }
     });
   });
