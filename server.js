@@ -59,7 +59,7 @@ io.on('connection', function (socket) {
   socket.on('away', function (data) {  
     getDBUserStatus(socket.username, function(udata) {
       udata = udata[0];
-      if(udata.icustomStatusFlag == false) {
+      if(typeof udata.icustomStatusFlag === "undefined"  || udata.icustomStatusFlag == false) {
         socket.broadcast.emit('user away', {
           username: data
         });
@@ -71,7 +71,7 @@ io.on('connection', function (socket) {
   socket.on('disconnect', function () {
     getDBUserStatus(socket.username, function(udata) {
       udata = udata[0];
-      if(udata.icustomStatusFlag == false) {
+        if(typeof udata.icustomStatusFlag === "undefined"  || udata.icustomStatusFlag == false) {
         socket.broadcast.emit('user left', {
           username: socket.username
         });
@@ -83,7 +83,7 @@ io.on('connection', function (socket) {
   socket.on('online', function (data) {
     getDBUserStatus(socket.username, function(udata) {
       udata = udata[0];
-      if(udata.icustomStatusFlag == false) {
+        if(typeof udata.icustomStatusFlag === "undefined"  || udata.icustomStatusFlag == false) {
         socket.broadcast.emit('user joined', {
           username: data
         });
@@ -100,7 +100,7 @@ io.on('connection', function (socket) {
 
     getDBUserStatus(socket.username, function(udata) {
       udata = udata[0];
-      if(udata.icustomStatusFlag == false) {
+        if(typeof udata.icustomStatusFlag === "undefined"  || udata.icustomStatusFlag == false) {
         socket.broadcast.emit('user joined', {
           username: socket.username
         });
