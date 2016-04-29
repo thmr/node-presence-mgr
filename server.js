@@ -46,7 +46,7 @@ function setDBUserStatus(username,sockid,status) {
 		user.save(function(err, user) {
 
             console.log(err);
-            console.log('u -----------> ',user);
+            console.log('u -----------> ' + user.id + ' .... ' + username  + '    ...... > '  ,user.status);
 
 			return ;
 		});
@@ -61,7 +61,7 @@ io.on('connection', function (socket) {
       udata = udata[0];
       if(udata.icustomStatusFlag == false) {
         socket.broadcast.emit('user away', {
-          username: data,
+          username: data
         });
         setDBUserStatus(socket.username,"away");
       }
