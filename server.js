@@ -86,9 +86,10 @@ io.on('connection', function (socket) {
       udata = udata[0];
         if(typeof udata.icustomStatusFlag === "undefined"  || udata.icustomStatusFlag == false) {
         socket.broadcast.emit('user joined', {
-          username: data
+            username: data,
+            lastSeen : new Date()
         });
-          setDBUserStatus(socket.username, socket.id ,"online");
+            setDBUserStatus(socket.username, socket.id ,"online");
       }
     });
   });
