@@ -43,6 +43,7 @@ function setDBUserStatus(username,sockid,status) {
 		}
 		user.status = status;
         user.socketid= sockid;
+		user.lastSeen = new Date();
 		user.save(function(err, user) {
 
             console.log(err);
