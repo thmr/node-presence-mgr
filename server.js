@@ -44,10 +44,11 @@ function setDBUserStatus(username,sockid,status) {
 		user.status = status;
         user.socketid= sockid;
 		user.lastSeen = new Date();
+        user.markModified('lastSeen');
 		user.save(function(err, user) {
 
             console.log(err);
-            console.log('u -----------> ' + user.id + ' .... ' + username  + '    ...... > '  ,user.status);
+            console.log('u -----------> ' + user.id + ' .... ' + username  + '    ...... > ' + user.status + ' last seen---> ' + user.lastSeen );
 
 			return ;
 		});
